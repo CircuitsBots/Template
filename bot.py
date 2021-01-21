@@ -7,7 +7,8 @@ PREFIX = os.getenv('PREFIX')
 
 bot = commands.Bot(
     command_prefix=PREFIX,
-    case_insensitive=True
+    case_insensitive=True,
+    intents=discord.Intents.all() # intents are needed after dpy 1.5 update to use guild or presence
 )
 
 
@@ -31,7 +32,7 @@ async def on_message(message):
     description='Make the bot say "Hello"' # Long description of command
 )
 async def hello(ctx):
-    await ctx.send(f"Hello {ctx.message.author.mention}!")
+    await ctx.send(f"Hello {ctx.author.mention}!")
 
 
 if __name__ == '__main__':
